@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teacher;
+use App\Models\User;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
+use GuzzleHttp\Psr7\Uri;
 
 class TeacherController extends Controller
 {
@@ -25,7 +27,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        return view('teacher.create');
     }
 
     /**
@@ -36,7 +38,22 @@ class TeacherController extends Controller
      */
     public function store(StoreTeacherRequest $request)
     {
-        //
+        // return $request;
+
+        if($request->profile){
+            $file = $request->profile;
+            $newName = 'teacher_'.uniqid().'.'.$file->extension();
+            $file->storeAs('public/teacher',$newName);
+        }
+        $teacher = new User();
+        $teacher->name = $request->name;
+        $teacher->email = $request->email;
+        $teacher->phone = $request->phone;
+        $teacher->date_of_birth = $request->date_of_birth;
+        $teacher->gender = $request->gender;
+        $teacher->address = $request->address;
+        $teacher->profile = $newName;
+        $teacher->save();
     }
 
     /**

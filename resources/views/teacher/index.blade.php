@@ -29,18 +29,32 @@
                                     <td>Female</td>
                                     <td>Yangon</td>
                                     <td>Profile</td>
-                                    <td>Delete</td>
+                                    <td>
+                                        <a href="" class="btn btn-outline-warning">Edit</a>
+                                        <form action="" method="POST" class="d-inline-block">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-outline-danger">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <th>1.</th>
-                                    <td>Nadi</td>
-                                    <td>Nadi</td>
-                                    <td>Nadi</td>
-                                    <td>Nadi</td>
-                                    <td>Nadi</td>
-                                    <td>Nadi</td>
-                                    <td>Nadi</td>
-                                    <td>Nadi</td>
+                                    <th>2.</th>
+                                    <td>Yumon</td>
+                                    <td>yumonkyaw711@gmail.com</td>
+                                    <td>0912345678</td>
+                                    <td>02/04/1999</td>
+                                    <td>Female</td>
+                                    <td>Yangon</td>
+                                    <td>Profile</td>
+                                    <td>
+                                        <a href="" class="btn btn-outline-warning">Edit</a>
+                                        <form action="" method="POST" class="d-inline-block">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-outline-danger">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
