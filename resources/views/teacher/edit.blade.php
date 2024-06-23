@@ -5,35 +5,34 @@
             <div class="col-md-6">
                 <div class="card mt-3">
                     <div class="card-body">
-                        <div class="card-header">
-                            <label class="row justify-content-center">Register Here!</label>
-                        </div>
-                        <form action="{{ route('teacher.store') }}" method="POST" enctype="multipart/form-data">
+                        {{-- {{ $teacher}} --}}
+                        <form action="{{ route('teacher.update',$teacher->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('put')
                             <div class="mb-3">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name" name="name" value="{{ old('name') }}">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name" name="name" value="{{ old('name',$teacher->name) }}">
                                 @error('name')
                                 <small class="text-danger">*{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="email">Email</label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email" name="email" value="{{ old('email') }}">
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email" name="email" value="{{ old('email',$teacher->email) }}">
                                 @error('email')
                                 <small class="text-danger">*{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="phone">Phone</label>
-                                <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" placeholder="Phone" name="phone" value="{{ old('phone') }}">
+                                <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" placeholder="Phone" name="phone" value="{{ old('phone',$teacher->phone) }}">
                                 @error('phone')
                                 <small class="text-danger">*{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="date of birth">Date of Birth</label>
-                                <input type="date" class="form-control @error('date_of_birth') is-invalid @enderror" id="date_of_birth" placeholder="Date of Birth" name="date_of_birth" value="{{ old('date_of_birth') }}">
+                                <input type="date" class="form-control @error('date_of_birth') is-invalid @enderror" id="date_of_birth" placeholder="Date of Birth" name="date_of_birth" value="{{ old('date_of_birth',$teacher->date_of_birth) }}">
                                 @error('date_of_birth')
                                 <small class="text-danger">*{{ $message }}</small>
                                 @enderror
@@ -58,20 +57,18 @@
                             </div>
                             <div class="mb-3">
                                 <label for="address">Address</label>
-                                <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" placeholder="Address" name="address" value="{{ old('address') }}">
+                                <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" placeholder="Address" name="address" value="{{ old('address',$teacher->address) }}">
                                 @error('address')
                                 <small class="text-danger">*{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="profile">Profile</label>
-                                <input type="file" class="form-control @error('profile') is-invalid @enderror" id="profile" placeholder="Profile" name="profile">
-                                @error('profile')
-                                <small class="text-danger">*{{ $message }}</small>
-                                @enderror
+                                <label for="profile">Profile</label> <br>
+                                <img src="{{ asset('storage/teacher/'.$teacher->profile) }}" width="100px" height="100px"> <br><br>
+                                <input type="file" class="form-control" placeholder="Profile" name="profile" value="{{ $teacher->profile}}">
                             </div>
                             <div>
-                                <button class="btn btn-outline-primary">Submit</button>
+                                <button class="btn btn-outline-primary">Update</button>
                                 <a href="{{ route('teacher.index') }}" class="btn btn-outline-dark">Back</a>
                             </div>
                         </form>
@@ -81,4 +78,3 @@
         </div>
     </div>
 @endsection
-

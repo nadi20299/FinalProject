@@ -1,14 +1,14 @@
 @extends('master')
 @section('content')
     <div class="container">
-        <div class="">
+        <div class="row">
             <div class="col-md-6">
                 <div class="card mt-3">
                     <div class="card-body">
                         <div class="card-header">
                             <label class="row justify-content-center">Register Here!</label>
                         </div>
-                        <form action="{{ route('teacher.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('student.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="name">Name</label>
@@ -72,7 +72,7 @@
                             </div>
                             <div>
                                 <button class="btn btn-outline-primary">Submit</button>
-                                <a href="{{ route('teacher.index') }}" class="btn btn-outline-dark">Back</a>
+                                <a href="{{ route('student.index') }}" class="btn btn-outline-dark">Back</a>
                             </div>
                         </form>
                     </div>
@@ -81,4 +81,3 @@
         </div>
     </div>
 @endsection
-
