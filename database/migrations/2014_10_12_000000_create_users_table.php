@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('date_of_birth');
             $table->enum('gender',[0,1])->default(0)->comment('0 is female , 1 is male');
+            $table->json('skills')->nullable();
+            $table->boolean('is_fullstack')->nullable()->default(0)->comment('0 is no , 1 is yes');
             $table->enum('role',[0,1,2])->default(2)->comment('0 is admin, 1 is teacher , 2 is student');
             $table->string('address');
             $table->longText('profile');

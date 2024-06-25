@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('teacher', TeacherController::class);
 
 Route::resource('student', StudentController::class);
+
+Route::resource('admin',AdminController::class);

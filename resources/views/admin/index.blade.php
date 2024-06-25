@@ -5,7 +5,7 @@
             <div class="col-12">
                 <div class="card mt-3">
                     <div class="card-body">
-                        <a href="{{ route('teacher.create') }}" class="btn btn-outline-success">Create +</a>
+                        <a href="{{ route('admin.create') }}" class="btn btn-outline-success">Create +</a>
                         <table class="table">
                            <thead>
                                 <tr>
@@ -21,26 +21,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($teachers as $teacher)
+                                @foreach ($admins as $admin)
                                     <tr>
                                         <th>{{ $loop->iteration }}</th>
-                                        <td>{{ $teacher->name }}</td>
-                                        <td>{{ $teacher->email }}</td>
-                                        <td>{{ $teacher->phone }}</td>
-                                        <td>{{ $teacher->date_of_birth }}</td>
-                                        <td>{{ $teacher->gender }}</td>
-                                        <td>{{ $teacher->address }}</td>
+                                        <td>{{ $admin->name }}</td>
+                                        <td>{{ $admin->email }}</td>
+                                        <td>{{ $admin->phone }}</td>
+                                        <td>{{ $admin->date_of_birth }}</td>
+                                        <td>{{ $admin->gender }}</td>
+                                        <td>{{ $admin->address }}</td>
                                         <td>
-                                            <img src="{{ asset('storage/teacher/'.$teacher->profile) }}" width="50px" height="50px">
+                                            <img src="{{ asset('storage/admin/'.$admin->profile) }}" width="50px" height="50px">
                                         </td>
                                         <td>
-                                            <a href="{{ route('teacher.edit',$teacher->id) }}" class="btn btn-outline-warning">
+                                            <a href="{{ route('admin.edit',$admin->id) }}" class="btn btn-outline-warning">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
                                                   </svg>
                                             </a>
-                                            <form action="{{ route('teacher.destroy',$teacher->id)}}" method="POST" class="d-inline-block">
+                                            <form action="{{ route('admin.destroy',$admin->id)}}" method="POST" class="d-inline-block">
                                                 @csrf
                                                 @method('delete')
                                                 <button class="btn btn-outline-danger">

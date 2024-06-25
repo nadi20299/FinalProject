@@ -6,7 +6,6 @@ use App\Models\Teacher;
 use App\Models\User;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
-use GuzzleHttp\Psr7\Uri;
 
 class TeacherController extends Controller
 {

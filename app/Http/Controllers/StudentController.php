@@ -42,7 +42,7 @@ class StudentController extends Controller
             'name'=>'required |unique:users,name',
             'email'=>'required',
             'phone'=>'required',
-            'date_of_birth'=>'required | after:1943-12-31 | before:2004-01-01 ',
+            'date_of_birth'=>'required | after:1943-12-31 | before:2023-01-01',
             'gender'=>'required',
             'address'=>'required',
             'profile'=>'required',
@@ -102,7 +102,7 @@ class StudentController extends Controller
             'name'=>'required |unique:users,name',
             'email'=>'required',
             'phone'=>'required',
-            'date_of_birth'=>'required | after:1943-12-31 | before:2004-01-01',
+            'date_of_birth'=>'required | after:1973-12-31 | before:2023-01-01',
             'gender'=>'required',
             'address'=>'required',
         ]);
