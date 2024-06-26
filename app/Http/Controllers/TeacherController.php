@@ -6,6 +6,7 @@ use App\Models\Teacher;
 use App\Models\User;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
+use Illuminate\Support\Facades\Auth;
 
 class TeacherController extends Controller
 {
@@ -27,6 +28,10 @@ class TeacherController extends Controller
      */
     public function create()
     {
+        if(Auth::user()->role == 2)
+        {
+        return redirect()->route('student.index');
+    }
         return view('teacher.create');
     }
 

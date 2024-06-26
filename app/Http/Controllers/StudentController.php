@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -27,8 +28,13 @@ class StudentController extends Controller
      */
     public function create()
     {
+        if(Auth::user()->role == 2)
+        {
+        return redirect()->route('student.index');
+    }
         return view('student.create');
     }
+
 
     /**
      * Store a newly created resource in storage.

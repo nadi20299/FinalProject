@@ -71,20 +71,107 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Nadi Tun Oo</a>
+                        <a href="#" class="d-block text-uppercase">
+                           {{ Auth::user()->name }}
+                        </a>
                     </div>
                 </div>
 
+                {{-- <span class="right badge badge-danger">New</span> --}}
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
+
+                        @if(Auth::user()->role =! 0)
+                        <li class="nav-item d-none">
+                            <a href="{{ route('admin.create') }}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Widgets
-                                    {{-- <span class="right badge badge-danger">New</span> --}}
+                                    Create Admin
+                                </p>
+                            </a>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a href="{{ route('admin.create') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Create Admin
+                                </p>
+                            </a>
+                        </li>
+                        @endif
+                        @if(Auth::user()->role == 2)
+                        <li class="nav-item d-none">
+                            <a href="{{ route('admin.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Admin Lists
+                                </p>
+                            </a>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a href="{{ route('admin.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Admin Lists
+                                </p>
+                            </a>
+                        </li>
+                        @endif
+                        @if(Auth::user()->role == 2)
+                        <li class="nav-item d-none">
+                            <a href="{{ route('teacher.create')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Create Teacher
+                                </p>
+                            </a>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a href="{{ route('teacher.create')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Create Teacher
+                                </p>
+                            </a>
+                        </li>
+                        @endif
+                        <li class="nav-item">
+                            <a href="{{ route('teacher.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Teacher Lists
+                                </p>
+                            </a>
+                        </li>
+                        @if(Auth::user()->role == 2)
+                        <li class="nav-item d-none">
+                            <a href="{{ route('student.create')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Create Student
+                                </p>
+                            </a>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a href="{{ route('student.create')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Create Student
+                                </p>
+                            </a>
+                        </li>
+                        @endif
+                        <li class="nav-item">
+                            <a href="{{ route('student.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Student Lists
                                 </p>
                             </a>
                         </li>
@@ -114,9 +201,17 @@
         <footer class="main-footer">
             <strong>Copyright &copy; 2014-2024 <a href="https://adminlte.io">AdminFellowship.,Ltd</a>.</strong>
             All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.2.0
-            </div>
+            <div class="float-right d-sm-inline-block">
+                <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
         </footer>
 
         <!-- Control Sidebar -->
