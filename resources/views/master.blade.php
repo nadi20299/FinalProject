@@ -67,7 +67,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                        <img src="{{ asset('dist/img/user3-128x128.jpg') }}" class="img-circle elevation-2"
                             alt="User Image">
                     </div>
                     <div class="info">
@@ -83,7 +83,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
 
-                        @if(Auth::user()->role =! 0)
+                        @if(Auth::user()->role != 0)
                         <li class="nav-item d-none">
                             <a href="{{ route('admin.create') }}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>

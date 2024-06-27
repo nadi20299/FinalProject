@@ -6,9 +6,9 @@
                 <div class="card mt-3">
                     <div class="card-body">
                         @if(Auth::user()->role == 1)
-                        <a href="{{ route('student.create') }}" class="btn btn-outline-success d-none">Create +</a>
+                        <a href="{{ route('admin.create') }}" class="btn btn-outline-success d-none">Create +</a>
                         @else
-                        <a href="{{ route('student.create') }}" class="btn btn-outline-success">Create +</a>
+                        <a href="{{ route('admin.create') }}" class="btn btn-outline-success">Create +</a>
                         @endif
                         <table class="table">
                            <thead>

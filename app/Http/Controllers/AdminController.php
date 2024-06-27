@@ -31,7 +31,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        if(Auth::user()->role =! 0)
+        if(Auth::user()->role != 0)
         {
         return redirect()->route('admin.index');
     }
