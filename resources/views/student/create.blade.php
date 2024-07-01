@@ -27,6 +27,13 @@
                             @enderror
                         </div>
                         <div class="mb-3">
+                            <label for="password">Password</label>
+                            <input type="text" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password" value="{{ old('password') }}">
+                            @error('password')
+                            <small class="text-danger">*{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label for="phone">Phone</label>
                             <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone"
                                 placeholder="Phone" name="phone" value="{{ old('phone') }}">

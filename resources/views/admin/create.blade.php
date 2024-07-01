@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
-    <div class="container">
-        <div class="">
+    <div class="container d-flex align-items-center min-vh-100">
+        <div class="row w-100">
             <div class="col-md-6">
                 <div class="card mt-3">
                     <div class="card-body">
@@ -21,6 +21,13 @@
                                 <label for="email">Email</label>
                                 <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email" name="email" value="{{ old('email') }}">
                                 @error('email')
+                                <small class="text-danger">*{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="password">Password</label>
+                                <input type="text" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password" value="{{ old('password') }}">
+                                @error('password')
                                 <small class="text-danger">*{{ $message }}</small>
                                 @enderror
                             </div>

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class TeacherController extends Controller
 {
@@ -46,8 +47,9 @@ class TeacherController extends Controller
         // return $request;
         $request->validate([
             'name'=>'required |unique:users,name',
-            'email'=>'required',
-            'phone'=>'required',
+            'email'=>'required |unique:users,email',
+            'password' => ['required', 'string', 'min:8'],
+            'phone'=> 'required',
             'date_of_birth'=>'required | after:1943-12-31 | before:2004-01-01',
             'gender'=>'required',
             'address'=>'required',
@@ -62,6 +64,7 @@ class TeacherController extends Controller
         $teacher = new User();
         $teacher->name = $request->name;
         $teacher->email = $request->email;
+        $teacher->password = Hash::make($request->password);
         $teacher->phone = $request->phone;
         $teacher->date_of_birth = $request->date_of_birth;
         $teacher->gender = $request->gender;

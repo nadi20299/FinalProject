@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -49,7 +50,8 @@ class AdminController extends Controller
         // return $request;
         $request->validate([
             'name'=>'required |unique:users,name',
-            'email'=>'required',
+            'email'=>'required |unique:users,email',
+            'password' => ['required', 'string', 'min:8'],
             'phone'=>'required',
             'date_of_birth'=>'required | after:1943-12-31 | before:2004-01-01',
             'gender'=>'required',
@@ -65,6 +67,7 @@ class AdminController extends Controller
         $admin = new User();
         $admin->name = $request->name;
         $admin->email = $request->email;
+        $admin->password = Hash::make($request->password);
         $admin->phone = $request->phone;
         $admin->date_of_birth = $request->date_of_birth;
         $admin->gender = $request->gender;
